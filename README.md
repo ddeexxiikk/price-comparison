@@ -5,8 +5,9 @@ Skrypt pobiera dane ze stron podanych przez użytkownika i tworzy/update'uje pli
 Skrypt obsługuję strony:
 - RTV EURO AGD
 - Komputronik
+- X-Kom
 
 Action plan for the future:
 1. Niedługo zostanie dodana możliwość pobierania linków URL z pliku
-2. Dodanie obsługi Media Marktu, Neonetu, Avansu, X-Kom, Media Expert i Allegro
+2. Dodanie obsługi Media Marktu, Neonetu, Avansu, Media Expert i Allegro
 3. Obsługa wielowątkowości

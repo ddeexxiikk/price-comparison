@@ -39,6 +39,9 @@ def main():
         elif(sklep == "Komputronik"):
             komputronik = scraper.pobierz_dane_Komputronik(adres)
             scripts.update_pliku_bazy_danych(tytul, "Komputronik", komputronik)
+        elif(sklep == "x-kom"):
+            x_kom = scraper.pobierz_dane_X_Kom(adres)
+            scripts.update_pliku_bazy_danych(tytul, "x-kom", x_kom)
         
     #Jeśli licznik jest równy długości listy adresów, to znaczy, że nie udało się pobrać danych z żadnego sklepu
     if(licznik == len(adresy)):

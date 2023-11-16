@@ -8,23 +8,10 @@ def sprawdz_sklep(adres):
         return "RTV EURO AGD"
     elif(adres.find("komputronik.pl") != -1):
         return "Komputronik"
-    else:
-        return None
-    
-    '''
-    elif(adres.find("mediamarkt.pl") != -1):
-        return "Media Markt"
-    elif(adres.find("neonet.pl") != -1):
-        return "Neonet"
     elif(adres.find("x-kom.pl") != -1):
         return "x-kom"
-    elif(adres.find("mediaexpert.pl") != -1):
-        return "Media Expert"
-    elif(adres.find("avans.pl") != -1):
-        return "Avans"
-    elif(adres.find("allegro.pl") != -1):
-        return "Allegro"
-    '''
+    else:
+        return None
 
 def stworz_plik_bazy_danych(tytul):
     #Stworz plik CSV z tytulem i data w folderze Database
