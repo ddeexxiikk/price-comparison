@@ -31,7 +31,6 @@ def main():
     for adres in adresy:
         sklep = scripts.sprawdz_sklep(adres)
         if(sklep == None):
-            print("Brak możliwości pobrania danych")
             licznik += 1
             continue
         elif(sklep == "RTV EURO AGD"):

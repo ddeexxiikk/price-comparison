@@ -31,8 +31,7 @@ def stworz_plik_bazy_danych(tytul):
     nazwa_pliku = "Database/" + tytul + ".csv"
     plik = open(nazwa_pliku, "w")
     #Dodaj naglowki do pliku: w pierwszej linii data wraz z godziną, w drugiej sklep,cena 
-    plik.write("Data: " + time.strftime("%d/%m %H:%M") + "\n")
-    plik.write("Sklep,Cena\n")
+    plik.write(time.strftime("%d/%m %H:%M") + "\n")
     plik.close()
 
     return plik
