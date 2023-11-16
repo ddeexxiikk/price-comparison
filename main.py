@@ -1,5 +1,7 @@
 #Główny plik skryptu, wywołujący funkcje z pozostałych plików
-import lib/scraper.py
+import lib.scraper as scraper
+import lib.scripts as scripts
+import time
 
 #Główna funkcja main, wywołująca pozostałe funkcje
 def main():
@@ -10,7 +12,7 @@ def main():
     adresy = []
     print("Podaj adres URL produktu: ")
     adresy.append(input())
-    
+
     while(True):
         print("Czy chcesz podać kolejny adres? (y/n)")
         odp = input()
@@ -21,13 +23,12 @@ def main():
             break
         else:
             print("Nieprawidłowa odpowiedź")
-
     print("Pobieram ceny dla Ciebie...")
 
     #Uruchomienie skryptów i stworzenie/update bazy danych
 
+    #Zakończenie skryptu
     print("Porównanie cen czeka na Ciebie w pliku. Miłego Dnia!")
-
     time.sleep(3)
     print("Wciśnij dowolny klawisz, aby zamknąć okno")
     input()
@@ -36,4 +37,3 @@ def main():
 #Wywołanie funkcji main
 if __name__ == "__main__":
     main()
-    
