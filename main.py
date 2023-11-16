@@ -26,6 +26,21 @@ def main():
     print("Pobieram ceny dla Ciebie...")
 
     #Uruchomienie skryptów i stworzenie/update bazy danych
+    for adres in adresy:
+        sklep = scripts.sprawdz_sklep(adres)
+        if(sklep == None):
+            print("Brak możliwości pobrania danych")
+            continue
+        elif(sklep == "RTV EURO AGD"):
+            rtv_euro_agd = scraper.pobierz_dane_RTV_EURO_AGD(adres)
+        elif(sklep == "Komputronik"):
+            komputronik = scraper.pobierz_dane_Komputronik(adres)
+
+        scripts.stworz_plik_bazy_danych(tytul)
+        if(sklep == "RTV EURO AGD"):
+            scripts.update_pliku_bazy_danych(tytul, "RTV EURO AGD", rtv_euro_agd)
+        elif(sklep == "Komputronik"):
+            scripts.update_pliku_bazy_danych(tytul, "Komputronik", komputronik)
 
     #Zakończenie skryptu
     print("Porównanie cen czeka na Ciebie w pliku. Miłego Dnia!")
