@@ -1,5 +1,5 @@
 #Plik przechowujący funkcję sprawdzające link i tworzące pliki bazy danych
-import scraper
+import lib.scraper as scraper
 import time
 
 
