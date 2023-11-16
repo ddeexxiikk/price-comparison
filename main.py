@@ -26,25 +26,32 @@ def main():
     print("Pobieram ceny dla Ciebie...")
 
     #Uruchomienie skryptów i stworzenie/update bazy danych
+    licznik=0
+    scripts.stworz_plik_bazy_danych(tytul)
     for adres in adresy:
         sklep = scripts.sprawdz_sklep(adres)
         if(sklep == None):
             print("Brak możliwości pobrania danych")
+            licznik += 1
             continue
         elif(sklep == "RTV EURO AGD"):
             rtv_euro_agd = scraper.pobierz_dane_RTV_EURO_AGD(adres)
-        elif(sklep == "Komputronik"):
-            komputronik = scraper.pobierz_dane_Komputronik(adres)
-
-        scripts.stworz_plik_bazy_danych(tytul)
-        if(sklep == "RTV EURO AGD"):
             scripts.update_pliku_bazy_danych(tytul, "RTV EURO AGD", rtv_euro_agd)
         elif(sklep == "Komputronik"):
+            komputronik = scraper.pobierz_dane_Komputronik(adres)
             scripts.update_pliku_bazy_danych(tytul, "Komputronik", komputronik)
+        
+    #Jeśli licznik jest równy długości listy adresów, to znaczy, że nie udało się pobrać danych z żadnego sklepu
+    if(licznik == len(adresy)):
+        print("Nie udało się pobrać danych z żadnego sklepu")
+        time.sleep(2)
+        print("Wciśnij dowolny klawisz, aby zamknąć okno")
+        input()
+        exit()
 
     #Zakończenie skryptu
     print("Porównanie cen czeka na Ciebie w pliku. Miłego Dnia!")
-    time.sleep(3)
+    time.sleep(2)
     print("Wciśnij dowolny klawisz, aby zamknąć okno")
     input()
     
