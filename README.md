@@ -7,3 +7,5 @@ Skrypt obsługuję strony:
 - Media Markt
 - Media Expert
 - Neonet
+- X-Kom
+- Komputronik
