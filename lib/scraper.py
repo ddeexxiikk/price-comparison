@@ -10,7 +10,7 @@ def pobierz_dane_RTV_EURO_AGD(adres):
         return None
     
     soup = BeautifulSoup(page.content, 'html.parser')
-    get_price = soup.find(class_="price-template__large--total").get_text() 
+    get_price = soup.find(class_="price-template__large--total").get_text()
 
     return get_price
 
