@@ -27,21 +27,39 @@ def main():
 
     #Uruchomienie skryptów i stworzenie/update bazy danych
     licznik=0
-    scripts.stworz_plik_bazy_danych(tytul)
-    for adres in adresy:
-        sklep = scripts.sprawdz_sklep(adres)
-        if(sklep == None):
-            licznik += 1
-            continue
-        elif(sklep == "RTV EURO AGD"):
-            rtv_euro_agd = scraper.pobierz_dane_RTV_EURO_AGD(adres)
-            scripts.update_pliku_bazy_danych(tytul, "RTV EURO AGD", rtv_euro_agd)
-        elif(sklep == "Komputronik"):
-            komputronik = scraper.pobierz_dane_Komputronik(adres)
-            scripts.update_pliku_bazy_danych(tytul, "Komputronik", komputronik)
-        elif(sklep == "x-kom"):
-            x_kom = scraper.pobierz_dane_X_Kom(adres)
-            scripts.update_pliku_bazy_danych(tytul, "x-kom", x_kom)
+    if(scripts.sprawdz_baze_danych(tytul) == True):
+        scripts.update_starego_pliku_bazy_danych(tytul)
+
+        for adres in adresy:
+            sklep = scripts.sprawdz_sklep(adres)
+            if(sklep == None):
+                licznik += 1
+                continue
+            elif(sklep == "RTV EURO AGD"):
+                rtv_euro_agd = scraper.pobierz_dane_RTV_EURO_AGD(adres)
+                scripts.update_pliku_bazy_danych(tytul, "RTV EURO AGD", rtv_euro_agd)
+            elif(sklep == "Komputronik"):
+                komputronik = scraper.pobierz_dane_Komputronik(adres)
+                scripts.update_pliku_bazy_danych(tytul, "Komputronik", komputronik)
+            elif(sklep == "x-kom"):
+                x_kom = scraper.pobierz_dane_X_Kom(adres)
+                scripts.update_pliku_bazy_danych(tytul, "x-kom", x_kom)
+    else:
+        scripts.stworz_plik_bazy_danych(tytul)
+        for adres in adresy:
+            sklep = scripts.sprawdz_sklep(adres)
+            if(sklep == None):
+                licznik += 1
+                continue
+            elif(sklep == "RTV EURO AGD"):
+                rtv_euro_agd = scraper.pobierz_dane_RTV_EURO_AGD(adres)
+                scripts.update_pliku_bazy_danych(tytul, "RTV EURO AGD", rtv_euro_agd)
+            elif(sklep == "Komputronik"):
+                komputronik = scraper.pobierz_dane_Komputronik(adres)
+                scripts.update_pliku_bazy_danych(tytul, "Komputronik", komputronik)
+            elif(sklep == "x-kom"):
+                x_kom = scraper.pobierz_dane_X_Kom(adres)
+                scripts.update_pliku_bazy_danych(tytul, "x-kom", x_kom)
         
     #Jeśli licznik jest równy długości listy adresów, to znaczy, że nie udało się pobrać danych z żadnego sklepu
     if(licznik == len(adresy)):
