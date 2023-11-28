@@ -11,32 +11,32 @@ def main():
     print("1. Podaj adresy URL produktu")
     print("2. Wczytaj adresy URL produktu z pliku")
     print("3. Wyjdź")
-    odp = input()
+    wybor = input()
 
-    if(odp == "1"):
+    if(wybor == "1"):
         adresy = []
         print("Podaj adres URL produktu: ")
         adresy.append(input())
         
         while(True):
             print("Czy chcesz podać kolejny adres? (y/n)")
-            odp = input()
-            if(odp == "y"):
+            wybor = input()
+            if(wybor == "y"):
                 print("Podaj adres URL produktu: ")
                 adresy.append(input())
-            elif(odp == "n"):
+            elif(wybor == "n"):
                 break
             else:
                 print("Nieprawidłowa odpowiedź")
 
-        print("Pobieram ceny dla Ciebie...")
-    elif(odp == "2"):
+    elif(wybor == "2"):
         print("Podaj nazwę pliku: ")
         nazwa_pliku_wejsciowego = input()
         adresy = scripts.wczytaj_plik(nazwa_pliku_wejsciowego)
-        print("Pobieram ceny dla Ciebie...")
-    elif(odp == "3"):
+
+    elif(wybor == "3"):
         exit()
+
     else:
         print("Nieprawidłowa odpowiedź")
         time.sleep(1)
@@ -45,6 +45,7 @@ def main():
         exit()
     
     #Uruchomienie skryptów i stworzenie/update bazy danych
+    print("Pobieram ceny dla Ciebie...")
     licznik=0
     if(scripts.sprawdz_baze_danych(tytul) == True):
         scripts.update_starego_pliku_bazy_danych(tytul)
