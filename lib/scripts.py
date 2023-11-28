@@ -33,7 +33,7 @@ def stworz_plik_bazy_danych(tytul):
 def update_pliku_bazy_danych(tytul, sklep, cena):
     nazwa_pliku = "Database/" + tytul + ".csv"
     plik = open(nazwa_pliku, "a")
-    plik.write(sklep + "," + cena + "\n")
+    plik.write(str(sklep) + "," + str(cena) + "\n")
     plik.close()
 
     return plik
@@ -46,3 +46,10 @@ def update_starego_pliku_bazy_danych( tytul):
     plik.close()
 
     return plik
+
+def wczytaj_plik(nazwa_pliku_wejsciowego):
+    plik = open(nazwa_pliku_wejsciowego, "r")
+    adresy = plik.readlines()
+    plik.close()
+
+    return adresy

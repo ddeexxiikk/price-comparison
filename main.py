@@ -1,4 +1,3 @@
-#Główny plik skryptu, wywołujący funkcje z pozostałych plików
 import lib.scraper as scraper
 import lib.scripts as scripts
 import time
@@ -9,22 +8,42 @@ def main():
     print("Podaj tytuł produktu: ")
     tytul = input()
 
-    adresy = []
-    print("Podaj adres URL produktu: ")
-    adresy.append(input())
+    print("1. Podaj adresy URL produktu")
+    print("2. Wczytaj adresy URL produktu z pliku")
+    print("3. Wyjdź")
+    odp = input()
 
-    while(True):
-        print("Czy chcesz podać kolejny adres? (y/n)")
-        odp = input()
-        if(odp == "y"):
-            print("Podaj adres URL produktu: ")
-            adresy.append(input())
-        elif(odp == "n"):
-            break
-        else:
-            print("Nieprawidłowa odpowiedź")
-    print("Pobieram ceny dla Ciebie...")
+    if(odp == "1"):
+        adresy = []
+        print("Podaj adres URL produktu: ")
+        adresy.append(input())
+        
+        while(True):
+            print("Czy chcesz podać kolejny adres? (y/n)")
+            odp = input()
+            if(odp == "y"):
+                print("Podaj adres URL produktu: ")
+                adresy.append(input())
+            elif(odp == "n"):
+                break
+            else:
+                print("Nieprawidłowa odpowiedź")
 
+        print("Pobieram ceny dla Ciebie...")
+    elif(odp == "2"):
+        print("Podaj nazwę pliku: ")
+        nazwa_pliku_wejsciowego = input()
+        adresy = scripts.wczytaj_plik(nazwa_pliku_wejsciowego)
+        print("Pobieram ceny dla Ciebie...")
+    elif(odp == "3"):
+        exit()
+    else:
+        print("Nieprawidłowa odpowiedź")
+        time.sleep(1)
+        print("Wciśnij dowolny klawisz, aby zamknąć okno")
+        input()
+        exit()
+    
     #Uruchomienie skryptów i stworzenie/update bazy danych
     licznik=0
     if(scripts.sprawdz_baze_danych(tytul) == True):
@@ -75,7 +94,5 @@ def main():
     print("Wciśnij dowolny klawisz, aby zamknąć okno")
     input()
     
-
-#Wywołanie funkcji main
 if __name__ == "__main__":
     main()

@@ -7,7 +7,6 @@ def pobierz_dane_RTV_EURO_AGD(adres):
     page = requests.get(adres, headers=headers)
 
     if(page.status_code != 200):
-        print("Błąd połączenia z serwerem")
         return None
     
     soup = BeautifulSoup(page.content, 'html.parser')
@@ -20,7 +19,6 @@ def pobierz_dane_Komputronik(adres):
     page = requests.get(adres, headers=headers)
 
     if(page.status_code != 200):
-        print("Błąd połączenia z serwerem")
         return None
     
     soup = BeautifulSoup(page.content, 'html.parser')
@@ -33,7 +31,6 @@ def pobierz_dane_X_Kom(adres):
     page = requests.get(adres, headers=headers)
 
     if(page.status_code != 200):
-        print("Błąd połączenia z serwerem")
         return None
     
     soup = BeautifulSoup(page.content, 'html.parser')
